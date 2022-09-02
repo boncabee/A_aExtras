@@ -1,10 +1,10 @@
 --[[
 
-	A_aExtras is part of ScriptStash
+	A_aExtras is code part of ScriptStash
 	Made by Roy007: https://www.unknowncheats.me/forum/members/4362780.html
+	Some code added and modified to fit my needs
 
 	Script for Kiddion's Modest External Menu: https://www.unknowncheats.me/forum/grand-theft-auto-v/497052-kiddions-modest-external-menu-thread-3-a.html
-	The script created by Roy007, some modified to fit my needs
 	
 ]]--
 
@@ -21,7 +21,7 @@ local function mpx() return stats.get_int("MPPLY_LAST_MP_CHAR") end
 Ext=menu.add_submenu("Extras")
 
 	-- Set Number Plate
-		local Plates={ "ER STORE", "OPEN BO", "RI 1", "IM GAY", "IM HORNY", "FUCK ME", "SANGEAN", "CATCH ME", "LUKONTOL" }
+		local Plates={ "POLICE", "OPEN BO", "RI 1", "IM GAY", "IM HORNY", "FUCK ME", "SANGEAN", "CATCH ME", "LUKONTOL" }
 		local function Veh() if localplayer:is_in_vehicle() then return localplayer:get_current_vehicle() else return nil end end
 		
 		Ext:add_array_item("Set Number Plate", Plates, function() if Veh() then for x=1, #Plates do if Plates[x]==Veh():get_number_plate_text() then
@@ -73,13 +73,13 @@ Ext=menu.add_submenu("Extras")
 		local OlA,OlG,OlVeh=nil,nil,nil
 		local function VehicleTweaks()
 		if localplayer:is_in_vehicle() then OlVeh=Veh()
-		if Veh():get_acceleration()==0.47 then if OlA then Veh():set_acceleration(OlA) end
+		if Veh():get_acceleration()==0.59 then if OlA then Veh():set_acceleration(OlA) end
 		if OlG then Veh():set_gravity(OlG) end if not OlVeh:get_can_be_visibly_damaged() then OlVeh:set_can_be_visibly_damaged(true) end
 		if OlVeh:get_window_collisions_disabled() then OlVeh:set_window_collisions_disabled(false) end
 		if OlVeh:get_godmode() then OlVeh:set_godmode(false) end OlA,OlG,OlVeh=nil,nil,nil
-		elseif Veh():get_acceleration() < 0.47 and Veh():get_acceleration() > 0.1 then
+		elseif Veh():get_acceleration() < 0.59 and Veh():get_acceleration() > 0.1 then
 		OlA=Veh():get_acceleration() OlG=Veh():get_gravity() OlV=Veh():get_can_be_visibly_damaged()
-		Veh():set_acceleration(0.47) Veh():set_gravity(14.8) Veh():set_max_speed(220) end
+		Veh():set_acceleration(0.59) Veh():set_gravity(14.8) Veh():set_max_speed(220) end
 		if Veh():get_acceleration()==40 then Veh():set_acceleration(OlA)
 		if not OlVeh:get_can_be_visibly_damaged() then OlVeh:set_can_be_visibly_damaged(true) end
 		if OlVeh:get_window_collisions_disabled() then OlVeh:set_window_collisions_disabled(false) end
@@ -117,12 +117,13 @@ Ext=menu.add_submenu("Extras")
 	--
 
 	-- Service Carbine
-		Ext:add_toggle("Enable Service Carbine", function()
+		Ext:add_toggle("Get Service Carbine", function()
 		return globals.get_boolean(262145 + 32775) end, function(value)
 		globals.set_boolean(262145 + 32775, value) end)
 	--
 
 --- Info
-	Ext:add_action("**Vehicle Tweaks Key>[~]**", function() end)
-	Ext:add_action("**Refill Snack/Armor/Ammo Key>[i]**", function() end)
+	Ext:add_action("  __________________Hotkey__________________", function() end)
+	Ext:add_action("Vehicle Tweaks                                     [~]", function() end)
+	Ext:add_action("Refill Snack/Armor/Ammo                     [i]", function() end)
 ---
